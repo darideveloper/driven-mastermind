@@ -80,28 +80,17 @@ export default function Form() {
 
     getTransports().then(apiTransports => {
       setTransports(apiTransports)
-      transport = apiTransports[2].price
+      transport = apiTransports[0].price
       setActiveTransportPrice(transport)
-      setTotal(apiTransports[2].price)
+      setTotal(apiTransports[0].price)
     })
 
   }, [])
 
-  // Renmder again when prices change
+  // Render again when prices change
   useEffect(() => {
-
-    // Get multipliear for round trip
-    let multiplier = 1
-    if (activeTransportType == "Arriving,Departing") {
-      multiplier = 2
-    }
-
     // Calculate total
     let total = activeTransportPrice
-    const hotel_obj = hotels.find(h => h.value == hotel)
-    if (hotel_obj) {
-      total += hotel_obj.price * multiplier
-    }
     setTotal(total)
   }, [hotel, activeTransportPrice])
 

@@ -254,7 +254,7 @@ export default function Form() {
               activeOption={passengers}
             />
             <FormText
-              text="Maximum four passengers per vehicle"
+              text="Fill only if you bring a guest"
             />
             <Select
               label='Hotel'

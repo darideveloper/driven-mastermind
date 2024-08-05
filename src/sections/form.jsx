@@ -55,8 +55,6 @@ export default function Form() {
 
   useEffect(() => {
 
-    let transport
-
     // Detect when resize screen and update media query status
     window.addEventListener('resize', () => {
       handleResize()
@@ -72,20 +70,11 @@ export default function Form() {
     })
 
     getTransports().then(apiTransports => {
-      setTransports(apiTransports)
-      transport = apiTransports[0].price
-      setActiveTransportPrice(transport)
+      setActiveTransportPrice(apiTransports[0].price)
       setTotal(apiTransports[0].price)
     })
 
   }, [])
-
-  // Render again when prices change
-  useEffect(() => {
-    // Calculate total
-    let total = activeTransportPrice
-    setTotal(total)
-  }, [hotel, activeTransportPrice])
 
 
   function getArraivingDepartingForm() {
@@ -164,15 +153,15 @@ export default function Form() {
     setLoading(true)
 
     // Get data from innputs
-    const inputsData = []
+    const inputsData = {}
     const inputs = document.querySelectorAll("input:not(.no-collect), select:not(.no-collect)")
     inputs.forEach(input => {
-      let name = input.name.charAt(0).toUpperCase() + input.name.slice(1)
-      name = name.replace("-", " ")
-      const value = input.value
-      inputsData.push(`${name}: ${value}`)
+      let inutName = input.name.charAt(0).toUpperCase() + input.name.slice(1)
+      inutName = inutName.replace("-", " ")
+      const Inputvalue = input.value
+      inputsData[inutName] = Inputvalue
     })
-    const serviceDescription = inputsData.join(", ")
+    console.log({inputsData})
 
     try {
       const response = await fetch(saleEndpoint, {
@@ -181,13 +170,7 @@ export default function Form() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          "name": name,
-          "last-name": lastName,
-          "price": total,
-          "details": serviceDescription,
-          "email": email
-        }),
+        body: JSON.stringify(inputsData),
         mode: "cors",
       })
       const response_json = await response.json()

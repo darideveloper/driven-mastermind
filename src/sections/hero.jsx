@@ -21,7 +21,6 @@ export default function Hero () {
         </div>
 
         <img src="./imgs/hero.png" alt="transport image" className="w-full"/>
-
         <img 
           src="./imgs/logo.png"
           alt="Driven Mastermind logo"

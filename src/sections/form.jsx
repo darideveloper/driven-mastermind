@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 
 // Components
 import Subtitle from "../components/subtitle"
-import TransportTypes from "../components/transport-types"
 import Input from "../components/input"
 import Select from "../components/select"
 import Fieldset from "../components/fieldset"
@@ -23,10 +22,13 @@ import Swal from 'sweetalert2'
 
 export default function Form() {
 
-  const { loading, setLoading } = useContext(LoadContext)
+  // System consts
+  const activeTransportType = "Arriving,Departing"
 
-  const [transports, setTransports] = useState([])
-  const [activeTransportType, setActiveTransportType] = useState("Arriving,Departing")
+  // Context
+  const { setLoading } = useContext(LoadContext)
+  
+  // Form state
   const [activeTransportPrice, setActiveTransportPrice] = useState(0)
   const [mediaQuery, setMediaQuery] = useState(false)
   const [name, setName] = useState('')
@@ -45,15 +47,6 @@ export default function Form() {
   const [total, setTotal] = useState(0)
   const [otherHotel, setOtherHotel] = useState('')
   const [email, setEmail] = useState('')
-
-  function handleUpdateType(id) {
-    // Update active transport type
-    setActiveTransportType(id)
-
-    // Save price
-    const price = transports.find(transport => transport.id == id).price
-    setActiveTransportPrice(price)
-  }
 
   function handleResize() {
     const mediaQuery = window.matchMedia('(max-width: 768px)')
@@ -242,11 +235,6 @@ export default function Form() {
       />
 
       <form action="." method="post" className="mx-auto" onSubmit={handleSubmit}>
-        <TransportTypes
-          handleUpdateType={handleUpdateType}
-          activeTransportType={activeTransportType}
-          transports={transports}
-        />
 
         <div className="fields w-5/6 mx-auto grid gap-10" style={{ gridTemplateColumns: mediaQuery ? "repeat(1, 1fr)" : activeTransportType == "Arriving,Departing" ? "repeat(3, 1fr)" : "repeat(2, 1fr)" }}>
           <Fieldset title='General'>

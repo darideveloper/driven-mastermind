@@ -3,7 +3,7 @@ import { apiBaseUrl } from "./api"
 export async function getHotels () {
   const hotels = [
     {
-      "name": "Viceroy Riviera Maya",
+      "name": "UNICO 20° 87° Riviera Maya",
       "extra_price": 0
     },
 ]

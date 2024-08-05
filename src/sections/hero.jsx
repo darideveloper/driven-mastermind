@@ -20,20 +20,17 @@ export default function Hero () {
           </h2>
         </div>
 
-        <img src="./imgs/hero.jpg" alt="transport image" className="w-full"/>
+        <img src="./imgs/hero.png" alt="transport image" className="w-full"/>
 
-        <h1
+        <img 
+          src="/imgs/logo.png"
+          alt="Driven Mastermind logo"
           className={`
-            text-center
-            text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-            text-gold
-            my-20 sm:mb-28 lg:mb-32
+            w-2/3 sm:w-1/3 
+            mx-auto
+            mt-24
           `}
-        >
-          WILL & RYAN'S 
-          <br />
-          MEXICO CELEBRATION
-        </h1>
+        />
       </div>
     </section>
   )

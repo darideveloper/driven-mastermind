@@ -112,7 +112,7 @@ export default function Form() {
           <Input
             label='Airline'
             type='text'
-            name='airline'
+            name={`${title.toLowerCase()}-airline`}
             placeholder="Enter your airline"
             handleUpdate={(e) => title == "Arriving" ? setArrivingAirline(e.target.value) : setDepartingAirline(e.target.value)}
             value={title == "Arriving" ? arrivingAirline : departingAirline}
@@ -120,7 +120,7 @@ export default function Form() {
           <Input
             label='Flight number'
             type='text'
-            name='flight'
+            name={`${title.toLowerCase()}-flight`}
             placeholder="Enter your flight number"
             handleUpdate={(e) => title == "Arriving" ? setArrivingFlight(e.target.value) : setDepartingFlight(e.target.value)}
             value={title == "Arriving" ? arrivingFlight : departingFlight}
@@ -161,7 +161,9 @@ export default function Form() {
       const Inputvalue = input.value
       inputsData[inutName] = Inputvalue
     })
-    console.log({inputsData})
+    
+    // Add price to total
+    inputsData["Price"] = total
 
     try {
       const response = await fetch(saleEndpoint, {

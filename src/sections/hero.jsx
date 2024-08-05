@@ -23,7 +23,7 @@ export default function Hero () {
         <img src="./imgs/hero.png" alt="transport image" className="w-full"/>
 
         <img 
-          src="/imgs/logo.png"
+          src="./imgs/logo.png"
           alt="Driven Mastermind logo"
           className={`
             w-2/3 sm:w-1/3 

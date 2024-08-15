@@ -215,9 +215,23 @@ export default function Form() {
 
   return (
     <section className="buy-form container" id="buy">
-      <Subtitle
-        text='Transportation'
-      />
+      
+      <Subtitle text="Transportation" />
+      
+      <p
+        className={`
+          text-2xl
+          text-center
+          max-w-7xl
+          mx-auto
+          my-12
+          px-4
+        `}
+      >
+        Shuttles will be running non-stop on October 13th and 14th for arriving flights and October 18th for return flights.
+        <br />
+        NO OTHER DATES WILL BE SERVICED.
+      </p>
 
       <form action="." method="post" className="mx-auto" onSubmit={handleSubmit}>
 

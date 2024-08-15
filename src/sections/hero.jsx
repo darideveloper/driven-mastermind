@@ -15,9 +15,7 @@ export default function Hero () {
                 text-sm sm:text-lg md:text-2xl lg:text-3xl
               `}
             >
-              Shuttles will be running non-stop on October 13th and 14th for arriving flights and October 18th for return flights.
-              <br />
-              NO OTHER DATES WILL BE SERVICED.
+              Please book your airport transportation at your earliest convenience
             </span>
           </h2>
         </div>

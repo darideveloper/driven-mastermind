@@ -99,7 +99,27 @@ export default function Form() {
             label={`${title} date`}
             type='date'
             name={`${title.toLowerCase()}-date`}
-            handleUpdate={(e) => title == "Arriving" ? setArrivingDate(e.target.value) : setDepartingDate(e.target.value)}
+            handleUpdate={(e) => {
+
+              const enabledArrivingDates = ['2024-10-13', '2024-10-14']
+              const enabledDepartingDates = ['2024-10-18']
+
+              if (title == "Arriving") {
+                if (enabledArrivingDates.includes(e.target.value)) {
+                  setTotal(activeTransportPrice * passengers)
+                  setArrivingDate(e.target.value)
+                } else {
+                  alert("Only October 13th and 14th are available")
+                }
+              } else { 
+                if (enabledDepartingDates.includes(e.target.value)) {
+                  setTotal(activeTransportPrice * passengers)
+                  setDepartingDate(e.target.value)
+                } else {
+                  alert("Only October 18th is available")
+                }
+              }
+            }}
             value={title == "Arriving" ? arrivingDate : departingDate}
           />
           <Input

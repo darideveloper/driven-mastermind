@@ -265,6 +265,7 @@ export default function Form() {
               name='name'
               handleUpdate={(e) => setName(e.target.value)}
               value={name}
+              required={true}
             />
             <Input
               label='Last name'
@@ -273,6 +274,7 @@ export default function Form() {
               name='last-name'
               handleUpdate={(e) => setLastName(e.target.value)}
               value={lastName}
+              required={true}
             />
             <Input 
               label='Email'
@@ -281,6 +283,7 @@ export default function Form() {
               name='email'
               handleUpdate={(e) => setEmail(e.target.value)}
               value={email}
+              required={true}
             />
             <Select
               label='Number of passengers'
@@ -314,6 +317,7 @@ export default function Form() {
                 name='other-othel'
                 handleUpdate={(e) => setOtherHotel(e.target.value)}
                 value={otherHotel}
+                required={true}
               />
             }
 
